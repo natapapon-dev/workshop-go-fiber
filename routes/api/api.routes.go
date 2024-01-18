@@ -7,6 +7,6 @@ import (
 )
 
 func InitApiRoutes(main fiber.Router) {
-	v1Routes := main.Group("/v1")
-	v1.InitV1Routes(v1Routes)
+	apiRoutes := main.Group("/api")
+	v1.InitV1Routes(apiRoutes)
 }

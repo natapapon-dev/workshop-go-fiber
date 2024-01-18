@@ -10,12 +10,14 @@ import (
 func EmployeeRoutes(employees fiber.Router) fiber.Router {
 	auth := middlewares.InitAuthBasic()
 
-	employees.Get("", handlers.GetEmployee)
-	employees.Get("/:id", handlers.UpdateEmployee)
-	employees.Post("", auth, handlers.CreateEmployee)
-	employees.Put("/:id", auth, handlers.CreateEmployee)
+	employees.Post("/", auth, handlers.CreateEmployee)
+	employees.Put("/:id", auth, handlers.UpdateEmployee)
 	employees.Delete("/:id", auth, handlers.RemoveEmployeeById)
+
 	employees.Get("/search", handlers.SearchEmployee)
+	employees.Get("/generation", handlers.GetEmployeeGeneration)
+	employees.Get("/", handlers.GetEmployee)
+	employees.Get("/:id", handlers.GetEmployeeById)
 
 	return employees
 }

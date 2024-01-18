@@ -7,10 +7,10 @@ type IdModel struct {
 }
 
 type APIResponseBase struct {
-	Data    interface{}
-	Message string
-	Status  int
-	Success bool
+	Data    interface{} `json:"data"`
+	Message string      `json:"message"`
+	Status  int         `json:"status"`
+	Success bool        `json:"success"`
 }
 
 type APIResponse struct {
@@ -19,7 +19,11 @@ type APIResponse struct {
 
 type APIResponsePaginate struct {
 	APIResponseBase
-	CurrentPage int
-	TotalPage   int
-	PageSize    int
+	Pagination
+}
+
+type Pagination struct {
+	CurrentPage int `json:"current_page"`
+	TotalPage   int `json:"total_page"`
+	PageSize    int `json:"page_size"`
 }
